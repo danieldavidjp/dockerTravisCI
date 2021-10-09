@@ -5,3 +5,12 @@ services:
 script:
   - docker build - danieldavidjp/node .
   - docker  images danieldavidjp/node
+
+before_deploy:
+  - docker login - u danieldavidjp - p 36376694ddjp
+
+deploy:
+  provider: script
+  script: docker push danieldavidjp/node
+  on:
+    branch: master  
